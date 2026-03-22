@@ -13,7 +13,7 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 25px 40px;
-  border-bottom: 1px solid #eee;
+  border-bottom: none;
 }
 
 .logo {
@@ -39,7 +39,7 @@ nav a {
 
 .works {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 2px;
 }
 
@@ -51,6 +51,7 @@ nav a {
 
 .work:hover img {
   opacity: 0.92;
+  margin-bottom: 60px;
 }
 
 /* BIO */
@@ -67,4 +68,9 @@ nav a {
 .contact {
   text-align: center;
   padding: 60px 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
