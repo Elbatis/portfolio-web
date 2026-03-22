@@ -56,3 +56,16 @@ lightbox.addEventListener("click", (e) => {
     lightbox.style.display = "none";
   }
 });
+
+let autoplay;
+
+function iniciarAutoplay() {
+  autoplay = setInterval(() => {
+    currentIndex = (currentIndex + 1) % imagenes.length;
+    abrirImagen();
+  }, 3000); // cambia cada 3 segundos
+}
+
+function detenerAutoplay() {
+  clearInterval(autoplay);
+}
