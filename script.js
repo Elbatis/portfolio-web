@@ -20,6 +20,7 @@ imagenes.forEach((img, index) => {
 
 function abrirImagen() {
   lightbox.style.display = "flex";
+  iniciarAutoplay();
   imgGrande.style.opacity = 0;
 
   setTimeout(() => {
@@ -42,6 +43,7 @@ document.addEventListener("keydown", (e) => {
     }
     if (e.key === "Escape") {
       lightbox.style.display = "none";
+      detenerAutoplay();
     }
   }
 });
@@ -49,21 +51,25 @@ document.addEventListener("keydown", (e) => {
 // Click para cerrar
 cerrar.addEventListener("click", () => {
   lightbox.style.display = "none";
+  detenerAutoplay();
 });
 
 lightbox.addEventListener("click", (e) => {
   if (e.target !== imgGrande) {
     lightbox.style.display = "none";
+    detenerAutoplay();
   }
 });
 
 let autoplay;
 
 function iniciarAutoplay() {
+  clearInterval(autoplay); // 🔥 evita duplicados
+
   autoplay = setInterval(() => {
     currentIndex = (currentIndex + 1) % imagenes.length;
     abrirImagen();
-  }, 3000); // cambia cada 3 segundos
+  }, 5000);
 }
 
 function detenerAutoplay() {
