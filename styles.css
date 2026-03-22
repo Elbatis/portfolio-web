@@ -126,3 +126,40 @@ img {
   cursor: pointer;
 }
 
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  transition: opacity 0.4s ease;
+}
+
+/* Overlay info */
+.overlay-info {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+
+/* Botón cerrar minimal */
+#cerrar {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  font-size: 26px;
+  cursor: pointer;
+}
+
