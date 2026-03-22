@@ -71,6 +71,13 @@ nav a {
   line-height: 1.6;
 }
 
+.bio-img {
+  width: 120px;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+}
+
 /* CONTACT */
 
 .contact {
