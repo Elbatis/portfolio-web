@@ -13,3 +13,9 @@ imagenes.forEach(img => {
 cerrar.addEventListener("click", () => {
   lightbox.style.display = "none";
 });
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target !== imgGrande) {
+    lightbox.style.display = "none";
+  }
+});
