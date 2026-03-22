@@ -1,8 +1,8 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: white;
-  color: #111;
+  background: #000;
+  color: #eee;
   font-size: 14px;
   letter-spacing: 0.02em;
 }
@@ -13,7 +13,7 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 25px 40px;
-  border-bottom: none;
+    border-bottom: 1px solid #222;
 }
 
 .logo {
@@ -24,7 +24,7 @@ header {
 nav a {
   margin-left: 25px;
   text-decoration: none;
-  color: #111;
+  color: #eee;
 }
 
 /* HERO */
@@ -152,6 +152,7 @@ img {
   left: 40px;
   font-size: 14px;
   letter-spacing: 0.05em;
+  color: #ccc;
 }
 
 /* Botón cerrar minimal */
