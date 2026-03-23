@@ -7,6 +7,8 @@ body {
   letter-spacing: 0.02em;
 }
 
+/* SISTEMA DE SECCIONES */
+
 .section {
   margin: 140px 12%;
 }
@@ -68,7 +70,7 @@ nav a {
   letter-spacing: 0.03em;
 }
 
-/* BIO (NUEVO LAYOUT) */
+/* BIO */
 
 .bio-container {
   display: flex;
@@ -83,7 +85,7 @@ nav a {
 }
 
 .bio-text p {
-  line-height: 1.8;
+  line-height: 1.9;
   font-size: 14px;
   margin: 0;
 }
@@ -94,18 +96,38 @@ nav a {
   display: block;
 }
 
+/* EXHIBICIONES */
+
+.exhibiciones {
+  max-width: 720px;
+}
+
+.exhibicion {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 18px;
+}
+
+.year {
+  width: 60px;
+  color: #666;
+}
+
+.desc {
+  flex: 1;
+}
+
 /* CONTACT */
 
 .contact {
-  .contact {
-  max-width: 700px;
+  max-width: 720px;
 }
 
 /* BOTONES */
 
 .btn {
   display: inline-block;
-  margin: 10px;
+  margin: 10px 10px 0 0;
   padding: 10px 18px;
   border: 1px solid #000;
   color: #000;
@@ -119,6 +141,14 @@ nav a {
 .btn:hover {
   background: #000;
   color: #fff;
+}
+
+/* TITULOS */
+
+h2 {
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  margin-bottom: 40px;
 }
 
 /* LIGHTBOX */
@@ -191,40 +221,4 @@ nav a {
   .bio-image img {
     width: 140px;
   }
-}
-
-.exhibicion {
-  display: flex;
-  gap: 30px;
-  margin-bottom: 18px;
-}
-
-.year {
-  width: 60px;
-  color: #666;
-}
-
-.desc {
-  flex: 1;
-}
-
-.exhibiciones h2 {
-  font-size: 16px;
-  margin-bottom: 40px;
-  letter-spacing: 0.1em;
-}
-
-.exhibicion {
-  margin-bottom: 20px;
-}
-
-.exhibicion p {
-  margin: 0;
-  line-height: 1.6;
-}
-
-h2 {
-  font-size: 18px;
-  letter-spacing: 0.12em;
-  margin-bottom: 40px;
 }
