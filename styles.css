@@ -13,7 +13,7 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 25px 40px;
-    border-bottom: 1px solid #222;
+  border-bottom: 1px solid #222;
 }
 
 .logo {
@@ -56,29 +56,39 @@ nav a {
 
 .work:hover img {
   opacity: 0.85;
-  margin-bottom: 60px;
-  text-align: center;
-  margin-bottom: 80px;
-}
 }
 
-/* BIO */
+.info {
+  font-size: 14px;
+  margin-top: 8px;
+  letter-spacing: 0.03em;
+}
 
-.bio p {
+/* BIO (NUEVO LAYOUT) */
+
+.bio-container {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  margin: 120px 8%;
+  flex-wrap: wrap;
+}
+
+.bio-text {
   max-width: 520px;
-  margin: 120px 0 120px 8%;
-  padding: 0;
+  flex: 1;
+}
+
+.bio-text p {
   line-height: 1.8;
   font-size: 14px;
-  letter-spacing: 0.02em;
+  margin: 0;
 }
 
-.bio-img {
-  width: 120px;
+.bio-image img {
+  width: 220px;
+  height: auto;
   display: block;
-  margin-top: 10px;
-  margin: 0 auto 20px;
-  border-radius: 50%;
 }
 
 /* CONTACT */
@@ -89,91 +99,7 @@ nav a {
   padding: 60px 20px;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-.info {
-  font-size: 14px;
-  margin-top: 8px;
-  letter-spacing: 0.03em;
-}
-@media (max-width: 900px) {
-  .works {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 500px) {
-  .works {
-    grid-template-columns: 1fr;
-  }
-}
-
-.lightbox {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.lightbox img {
-  max-width: 60%;
-  max-height: 60%;
-}
-
-#cerrar {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-.lightbox {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  transition: opacity 0.4s ease;
-}
-
-/* Overlay info */
-.overlay-info {
-  position: absolute;
-  bottom: 40px;
-  left: 40px;
-  font-size: 14px;
-  letter-spacing: 0.05em;
-  color: #000;
-}
-
-/* Botón cerrar minimal */
-#cerrar {
-  position: absolute;
-  top: 25px;
-  right: 40px;
-  font-size: 26px;
-  cursor: pointer;
-}
+/* BOTONES */
 
 .btn {
   display: inline-block;
@@ -193,18 +119,74 @@ img {
   color: #fff;
 }
 
-#bio {
-  max-width: 520px;
-  margin: 120px 0 120px 10%;
+/* LIGHTBOX */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 60%;
+  max-height: 60%;
+  transition: opacity 0.4s ease;
+}
+
+.overlay-info {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #000;
+}
+
+#cerrar {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .works {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .works {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 800px) {
   .bio-container {
     flex-direction: column;
+    margin: 80px 20px;
     gap: 30px;
   }
 
+  .bio-text {
+    max-width: 100%;
+  }
+
+  .bio-text p {
+    font-size: 15px;
+  }
+
   .bio-image img {
-    width: 160px;
+    width: 140px;
   }
 }
