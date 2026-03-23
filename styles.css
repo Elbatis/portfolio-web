@@ -64,9 +64,9 @@ nav a {
 
 /* BIO */
 
-.bio {
+.bio p {
   max-width: 600px;
-  margin: 80px auto;
+  margin: 0 auto;
   padding: 0 20px;
   text-align: left;
   line-height: 1.6;
