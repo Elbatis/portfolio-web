@@ -58,6 +58,7 @@ nav a {
   object-fit: cover;
   display: block;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .work:hover img {
