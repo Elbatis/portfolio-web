@@ -7,6 +7,10 @@ body {
   letter-spacing: 0.02em;
 }
 
+.section {
+  margin: 140px 12%;
+}
+
 /* HEADER */
 
 header {
@@ -70,7 +74,6 @@ nav a {
   display: flex;
   gap: 80px;
   align-items: flex-start;
-  margin: 120px 12%;
   flex-wrap: wrap;
 }
 
@@ -94,9 +97,8 @@ nav a {
 /* CONTACT */
 
 .contact {
-  text-align: center;
-  margin-top: 40px;
-  padding: 60px 20px;
+  .contact {
+  max-width: 700px;
 }
 
 /* BOTONES */
@@ -192,8 +194,7 @@ nav a {
 }
 
 .exhibiciones {
-  max-width: 650px;
-  margin: 160px 12%;
+  max-width: 750px;
   padding: 0 20px;
 }
 
