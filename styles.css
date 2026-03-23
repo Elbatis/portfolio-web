@@ -232,3 +232,15 @@ h2 {
   opacity: 1;
   transform: translateY(0);
 }
+
+const faders = document.querySelectorAll(".fade-in");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+});
+
+faders.forEach(el => observer.observe(el));
