@@ -193,9 +193,19 @@ nav a {
   }
 }
 
-.exhibiciones {
-  max-width: 750px;
-  padding: 0 20px;
+.exhibicion {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 18px;
+}
+
+.year {
+  width: 60px;
+  color: #666;
+}
+
+.desc {
+  flex: 1;
 }
 
 .exhibiciones h2 {
@@ -211,4 +221,10 @@ nav a {
 .exhibicion p {
   margin: 0;
   line-height: 1.6;
+}
+
+h2 {
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  margin-bottom: 40px;
 }
