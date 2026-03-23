@@ -68,14 +68,14 @@ nav a {
 
 .bio-container {
   display: flex;
-  gap: 60px;
+  gap: 80px;
   align-items: flex-start;
-  margin: 120px 8%;
+  margin: 120px 12%;
   flex-wrap: wrap;
 }
 
 .bio-text {
-  max-width: 520px;
+  max-width: 720px;
   flex: 1;
 }
 
@@ -192,8 +192,8 @@ nav a {
 }
 
 .exhibiciones {
-  max-width: 700px;
-  margin: 120px auto;
+  max-width: 650px;
+  margin: 160px 12%;
   padding: 0 20px;
 }
 
