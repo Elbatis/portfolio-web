@@ -198,3 +198,13 @@ img {
   margin: 120px 0 120px 10%;
 }
 
+@media (max-width: 800px) {
+  .bio-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .bio-image img {
+    width: 160px;
+  }
+}
