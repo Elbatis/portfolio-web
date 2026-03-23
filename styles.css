@@ -192,3 +192,10 @@ img {
   color: #fff;
 }
 
+#bio {
+  max-width: 600px !important;
+  margin: 80px auto !important;
+  padding: 0 20px !important;
+  border: 2px solid red !important;
+}
+
