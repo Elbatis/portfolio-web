@@ -20,7 +20,6 @@ imagenes.forEach((img, index) => {
 
 function abrirImagen() {
   lightbox.style.display = "flex";
-  iniciarAutoplay();
   imgGrande.style.opacity = 0;
 
   setTimeout(() => {
