@@ -190,3 +190,24 @@ nav a {
     width: 140px;
   }
 }
+
+.exhibiciones {
+  max-width: 700px;
+  margin: 120px auto;
+  padding: 0 20px;
+}
+
+.exhibiciones h2 {
+  font-size: 16px;
+  margin-bottom: 40px;
+  letter-spacing: 0.1em;
+}
+
+.exhibicion {
+  margin-bottom: 20px;
+}
+
+.exhibicion p {
+  margin: 0;
+  line-height: 1.6;
+}
