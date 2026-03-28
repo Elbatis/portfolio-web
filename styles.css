@@ -25,7 +25,7 @@ header {
 }
 
 .logo {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: 22px;
   font-weight: 300;
   letter-spacing: 0.18em;
@@ -162,7 +162,7 @@ nav a:hover {
 /* ===== TÍTULOS ===== */
 
 h2 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: 22px;
   font-weight: 400;
   letter-spacing: 0.1em;
@@ -266,7 +266,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.14em;
@@ -292,7 +292,7 @@ h3:first-of-type {
 }
 
 .serie-titulo {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 0.1em;
