@@ -308,3 +308,18 @@ h3:first-of-type {
   margin: 0 0 28px;
   text-transform: none;
 }
+
+.overlay-info {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #888;
+  white-space: nowrap;
+}
+
+#cerrar {
+  color: #111;
+}
