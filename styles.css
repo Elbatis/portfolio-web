@@ -314,7 +314,7 @@ h3:first-of-type {
   bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 0.08em;
   color: #888;
   white-space: nowrap;
