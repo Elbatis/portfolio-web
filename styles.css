@@ -26,11 +26,11 @@ header {
 }
 
 .logo {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-family: 'Lora', serif;
+  font-size: 22px;
   font-weight: 300;
   letter-spacing: 0.18em;
-  font-variant: normal;
+  font-variant: small-caps;
   text-transform: lowercase;
 }
 
