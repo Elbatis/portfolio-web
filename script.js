@@ -125,3 +125,23 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 faders.forEach(el => observer.observe(el));
+
+// ===== HERO SLIDESHOW =====
+
+const heroImgs = [
+  "images/obra1.jpg",
+  "images/obra2.jpg",
+  "images/obra3.jpg"
+];
+
+let heroIndex = 0;
+const heroEl = document.getElementById("hero-img");
+
+setInterval(() => {
+  heroIndex = (heroIndex + 1) % heroImgs.length;
+  heroEl.style.opacity = 0;
+  setTimeout(() => {
+    heroEl.src = heroImgs[heroIndex];
+    heroEl.style.opacity = 1;
+  }, 600);
+}, 8000);
