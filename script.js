@@ -1,34 +1,41 @@
-// ===== GALERÍA / LIGHTBOX =====
-
-let imagenes = Array.from(document.querySelectorAll(".work img"));
-let currentIndex = 0;
+// ===== LIGHTBOX CON DETALLES =====
 
 const lightbox = document.getElementById("lightbox");
 const imgGrande = document.getElementById("img-grande");
 const cerrar = document.getElementById("cerrar");
 
-// Overlay de info
 const info = document.createElement("div");
 info.classList.add("overlay-info");
 lightbox.appendChild(info);
 
-// Flechas de navegación
 const flechaIzq = document.createElement("span");
 flechaIzq.textContent = "←";
-flechaIzq.style.cssText = "position:absolute;left:40px;top:50%;transform:translateY(-50%);font-size:22px;cursor:pointer;color:#111;user-select:none;letter-spacing:0;";
+flechaIzq.style.cssText = "position:absolute;left:40px;top:50%;transform:translateY(-50%);font-size:22px;cursor:pointer;color:#111;user-select:none;";
 lightbox.appendChild(flechaIzq);
 
 const flechaDer = document.createElement("span");
 flechaDer.textContent = "→";
-flechaDer.style.cssText = "position:absolute;right:40px;top:50%;transform:translateY(-50%);font-size:22px;cursor:pointer;color:#111;user-select:none;letter-spacing:0;";
+flechaDer.style.cssText = "position:absolute;right:40px;top:50%;transform:translateY(-50%);font-size:22px;cursor:pointer;color:#111;user-select:none;";
 lightbox.appendChild(flechaDer);
 
-// Abrir imagen al hacer click
-imagenes.forEach((img, index) => {
-  img.addEventListener("click", () => {
-    currentIndex = index;
+let secuencia = [];
+let currentIndex = 0;
+
+document.querySelectorAll(".work").forEach(work => {
+  work.querySelector("img").addEventListener("click", () => {
+    const principal = work.querySelector("img").src;
+    const titulo = work.querySelector(".info").textContent;
+    const detalles = work.dataset.detalles
+      ? JSON.parse(work.dataset.detalles)
+      : [];
+
+    secuencia = [
+      { src: principal, titulo },
+      ...detalles.map(src => ({ src, titulo: titulo + " — detalle" }))
+    ];
+
+    currentIndex = 0;
     abrirImagen();
-    iniciarAutoplay();
   });
 });
 
@@ -37,94 +44,42 @@ function abrirImagen() {
   imgGrande.style.opacity = 0;
 
   setTimeout(() => {
-    imgGrande.src = imagenes[currentIndex].src;
-    info.textContent = imagenes[currentIndex].nextElementSibling?.textContent || "";
+    imgGrande.src = secuencia[currentIndex].src;
+    info.textContent = secuencia[currentIndex].titulo;
     imgGrande.style.opacity = 1;
+
+    flechaIzq.style.visibility = secuencia.length > 1 ? "visible" : "hidden";
+    flechaDer.style.visibility = secuencia.length > 1 ? "visible" : "hidden";
   }, 100);
 }
 
-// Navegación con teclado
-document.addEventListener("keydown", (e) => {
-  if (lightbox.style.display !== "flex") return;
-
-  if (e.key === "ArrowRight") {
-    currentIndex = (currentIndex + 1) % imagenes.length;
-    abrirImagen();
-    reiniciarAutoplay();
-  }
-  if (e.key === "ArrowLeft") {
-    currentIndex = (currentIndex - 1 + imagenes.length) % imagenes.length;
-    abrirImagen();
-    reiniciarAutoplay();
-  }
-  if (e.key === "Escape") {
-    cerrarLightbox();
-  }
-});
-
-// Navegación con flechas visuales
 flechaDer.addEventListener("click", (e) => {
   e.stopPropagation();
-  currentIndex = (currentIndex + 1) % imagenes.length;
+  currentIndex = (currentIndex + 1) % secuencia.length;
   abrirImagen();
-  reiniciarAutoplay();
 });
 
 flechaIzq.addEventListener("click", (e) => {
   e.stopPropagation();
-  currentIndex = (currentIndex - 1 + imagenes.length) % imagenes.length;
+  currentIndex = (currentIndex - 1 + secuencia.length) % secuencia.length;
   abrirImagen();
-  reiniciarAutoplay();
 });
 
-// Cerrar
-function cerrarLightbox() {
-  lightbox.style.display = "none";
-  detenerAutoplay();
-}
+document.addEventListener("keydown", (e) => {
+  if (lightbox.style.display !== "flex") return;
+  if (e.key === "ArrowRight") { currentIndex = (currentIndex + 1) % secuencia.length; abrirImagen(); }
+  if (e.key === "ArrowLeft") { currentIndex = (currentIndex - 1 + secuencia.length) % secuencia.length; abrirImagen(); }
+  if (e.key === "Escape") cerrarLightbox();
+});
 
 cerrar.addEventListener("click", cerrarLightbox);
-
 lightbox.addEventListener("click", (e) => {
-  if (e.target !== imgGrande && e.target !== flechaIzq && e.target !== flechaDer) {
-    cerrarLightbox();
-  }
+  if (e.target !== imgGrande && e.target !== flechaIzq && e.target !== flechaDer) cerrarLightbox();
 });
 
-// ===== AUTOPLAY =====
-
-let autoplay;
-
-function iniciarAutoplay() {
-  clearInterval(autoplay);
-  autoplay = setInterval(() => {
-    currentIndex = (currentIndex + 1) % imagenes.length;
-    abrirImagen();
-  }, 5000);
+function cerrarLightbox() {
+  lightbox.style.display = "none";
 }
-
-function reiniciarAutoplay() {
-  detenerAutoplay();
-  iniciarAutoplay();
-}
-
-function detenerAutoplay() {
-  clearInterval(autoplay);
-}
-
-// ===== FADE IN AL HACER SCROLL =====
-
-const faders = document.querySelectorAll(".fade-in");
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, { threshold: 0.1 });
-
-faders.forEach(el => observer.observe(el));
 
 // ===== HERO SLIDESHOW =====
 
@@ -145,3 +100,13 @@ setInterval(() => {
     heroEl.style.opacity = 1;
   }, 600);
 }, 8000);
+
+// ===== FADE IN =====
+
+const faders = document.querySelectorAll(".fade-in");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("visible");
+  });
+}, { threshold: 0.1 });
+faders.forEach(el => observer.observe(el));
