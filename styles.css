@@ -6,8 +6,9 @@ body {
   font-family: 'Inter', sans-serif;
   background: white;
   color: #111;
-  font-size: 13px;
-  letter-spacing: 0.02em;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  text-transform: lowercase;
 }
 
 /* ===== HEADER ===== */
@@ -25,11 +26,11 @@ header {
 }
 
 .logo {
-  font-family: 'Lora', serif;
-  font-size: 22px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
   font-weight: 300;
   letter-spacing: 0.18em;
-  font-variant: small-caps;
+  font-variant: normal;
   text-transform: lowercase;
 }
 
@@ -169,12 +170,13 @@ nav a:hover {
 /* ===== TÍTULOS ===== */
 
 h2 {
-  font-family: 'Lora', serif;
-  font-size: 22px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.1em;
   margin-bottom: 36px;
   color: #111;
+  text-transform: lowercase;
 }
 
 /* ===== BOTONES ===== */
@@ -275,13 +277,13 @@ h2 {
 }
 
 h3 {
-  font-family: 'Lora', serif;
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
   color: #999;
   margin: 40px 0 16px;
+  text-transform: lowercase;
 }
 
 h3:first-of-type {
@@ -297,17 +299,17 @@ h3:first-of-type {
 }
 
 .serie {
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 .serie-titulo {
-  font-family: 'Lora', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.1em;
+  font-weight: 300;
+  letter-spacing: 0.08em;
   color: #111;
-  margin: 0 0 28px;
-  text-transform: none;
+  margin: 0 0 20px;
+  text-transform: lowercase;
 }
 
 .overlay-info {
