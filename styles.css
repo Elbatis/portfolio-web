@@ -54,6 +54,7 @@ nav a:hover {
   height: 100vh;
   object-fit: cover;
   display: block;
+  transition: opacity 0.6s ease;
 }
 
 /* ===== GALERÍA ===== */
