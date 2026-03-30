@@ -84,21 +84,21 @@ function cerrarLightbox() {
 // ===== HERO SLIDESHOW =====
 
 const heroImgs = [
-  "images/arriba_2.jpg",
-  "images/arriba_3.jpg",
-  "images/arriba_4.jpg",
-  "images/arriba_5.jpg",
-  "images/arriba_6.jpg",
-  "images/arriba_7.jpg",
-  "images/arriba_8.jpg",
-  "images/arriba_9.jpg",
-  "images/arriba_10.jpg",
-  "images/arriba_11.jpg",
-  "images/arriba_12.jpg",
-  "images/arriba_13.jpg",
-  "images/arriba_14.jpg",
-  "images/arriba_15.jpg",
-  "images/arriba_16.jpg"
+  "images/arriba2.jpg",
+  "images/arriba3.jpg",
+  "images/arriba4.jpg",
+  "images/arriba5.jpg",
+  "images/arriba6.jpg",
+  "images/arriba7.jpg",
+  "images/arriba8.jpg",
+  "images/arriba9.jpg",
+  "images/arriba10.jpg",
+  "images/arriba11.jpg",
+  "images/arriba12.jpg",
+  "images/arriba13.jpg",
+  "images/arriba14.jpg",
+  "images/arriba15.jpg",
+  "images/arriba16.jpg"
 ];
 
 let heroIndex = 0;
