@@ -84,9 +84,21 @@ function cerrarLightbox() {
 // ===== HERO SLIDESHOW =====
 
 const heroImgs = [
-  "images/obra1.jpg",
-  "images/obra2.jpg",
-  "images/obra3.jpg"
+  "images/arriba_2.jpg",
+  "images/arriba_3.jpg",
+  "images/arriba_4.jpg",
+  "images/arriba_5.jpg",
+  "images/arriba_6.jpg",
+  "images/arriba_7.jpg",
+  "images/arriba_8.jpg",
+  "images/arriba_9.jpg",
+  "images/arriba_10.jpg",
+  "images/arriba_11.jpg",
+  "images/arriba_12.jpg",
+  "images/arriba_13.jpg",
+  "images/arriba_14.jpg",
+  "images/arriba_15.jpg",
+  "images/arriba_16.jpg"
 ];
 
 let heroIndex = 0;
@@ -99,7 +111,7 @@ setInterval(() => {
     heroEl.src = heroImgs[heroIndex];
     heroEl.style.opacity = 1;
   }, 600);
-}, 8000);
+}, 10000);
 
 // ===== FADE IN =====
 
