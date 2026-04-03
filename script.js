@@ -22,7 +22,8 @@ let secuencia = [];
 let currentIndex = 0;
 
 document.querySelectorAll(".work").forEach(work => {
-  work.querySelector("img").addEventListener("click", () => {
+  const img = work.querySelector("img");addEventListener("click", () => {
+    if (!img) return;
     const principal = work.querySelector("img").src;
     const titulo = work.querySelector(".info").textContent;
     const detalles = work.dataset.detalles
