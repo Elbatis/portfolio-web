@@ -1,117 +1,127 @@
-// ===== ELEMENTOS =====
+// ===== GALERÍA / LIGHTBOX =====
+
+let imagenes = Array.from(document.querySelectorAll(".work img"));
+let currentIndex = 0;
 
 const lightbox = document.getElementById("lightbox");
 const imgGrande = document.getElementById("img-grande");
 const cerrar = document.getElementById("cerrar");
-const info = document.querySelector(".overlay-info");
 
-let secuencia = [];
-let currentIndex = 0;
+// Overlay de info
+const info = document.createElement("div");
+info.classList.add("overlay-info");
+lightbox.appendChild(info);
 
-// ===== PRELOAD =====
+// Flechas de navegación
+const flechaIzq = document.createElement("span");
+flechaIzq.textContent = "←";
+flechaIzq.style.cssText = "position:absolute;left:40px;top:50%;transform:translateY(-50%);font-size:22px;cursor:pointer;color:#111;user-select:none;letter-spacing:0;";
+lightbox.appendChild(flechaIzq);
 
-function preload(srcArray) {
-  srcArray.forEach(src => {
-    const img = new Image();
-    img.src = src;
-  });
-}
+const flechaDer = document.createElement("span");
+flechaDer.textContent = "→";
+flechaDer.style.cssText = "position:absolute;right:40px;top:50%;transform:translateY(-50%);font-size:22px;cursor:pointer;color:#111;user-select:none;letter-spacing:0;";
+lightbox.appendChild(flechaDer);
 
-// ===== ABRIR IMAGEN =====
-
-document.querySelectorAll(".work img").forEach(img => {
+// Abrir imagen al hacer click
+imagenes.forEach((img, index) => {
   img.addEventListener("click", () => {
-
-    const work = img.parentElement;
-    const titulo = work.querySelector(".info").textContent;
-
-    const detalles = work.dataset.detalles
-      ? JSON.parse(work.dataset.detalles)
-      : [];
-
-    secuencia = [
-      { src: img.src, titulo },
-      ...detalles.map(src => ({ src, titulo: titulo + " — detalle" }))
-    ];
-
-    // 🔥 preload de toda la secuencia
-    preload(secuencia.map(i => i.src));
-
-    currentIndex = 0;
-    mostrar(true);
+    currentIndex = index;
+    abrirImagen();
+    iniciarAutoplay();
   });
 });
 
-// ===== MOSTRAR CON FADE SUAVE =====
-
-function mostrar(first = false) {
+function abrirImagen() {
   lightbox.style.display = "flex";
-
-  if (!first) {
-    imgGrande.style.opacity = 0;
-  }
+  imgGrande.style.opacity = 0;
 
   setTimeout(() => {
-    imgGrande.src = secuencia[currentIndex].src;
-    info.textContent = secuencia[currentIndex].titulo;
-
-    requestAnimationFrame(() => {
-      imgGrande.style.opacity = 1;
-    });
-  }, first ? 0 : 200);
+    imgGrande.src = imagenes[currentIndex].src;
+    info.textContent = imagenes[currentIndex].nextElementSibling?.textContent || "";
+    imgGrande.style.opacity = 1;
+  }, 100);
 }
 
-// ===== NAVEGACIÓN =====
-
-function siguiente() {
-  currentIndex = (currentIndex + 1) % secuencia.length;
-  mostrar();
-}
-
-function anterior() {
-  currentIndex = (currentIndex - 1 + secuencia.length) % secuencia.length;
-  mostrar();
-}
-
-// ===== TECLADO =====
-
+// Navegación con teclado
 document.addEventListener("keydown", (e) => {
   if (lightbox.style.display !== "flex") return;
 
-  if (e.key === "ArrowRight") siguiente();
-  if (e.key === "ArrowLeft") anterior();
-  if (e.key === "Escape") cerrarLightbox();
-});
-
-// ===== SWIPE MOBILE =====
-
-let startX = 0;
-
-imgGrande.addEventListener("touchstart", (e) => {
-  startX = e.touches[0].clientX;
-});
-
-imgGrande.addEventListener("touchend", (e) => {
-  const endX = e.changedTouches[0].clientX;
-  const diff = startX - endX;
-
-  if (Math.abs(diff) > 50) {
-    if (diff > 0) {
-      siguiente(); // swipe izquierda
-    } else {
-      anterior(); // swipe derecha
-    }
+  if (e.key === "ArrowRight") {
+    currentIndex = (currentIndex + 1) % imagenes.length;
+    abrirImagen();
+    reiniciarAutoplay();
+  }
+  if (e.key === "ArrowLeft") {
+    currentIndex = (currentIndex - 1 + imagenes.length) % imagenes.length;
+    abrirImagen();
+    reiniciarAutoplay();
+  }
+  if (e.key === "Escape") {
+    cerrarLightbox();
   }
 });
 
-// ===== CERRAR =====
+// Navegación con flechas visuales
+flechaDer.addEventListener("click", (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % imagenes.length;
+  abrirImagen();
+  reiniciarAutoplay();
+});
+
+flechaIzq.addEventListener("click", (e) => {
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + imagenes.length) % imagenes.length;
+  abrirImagen();
+  reiniciarAutoplay();
+});
+
+// Cerrar
+function cerrarLightbox() {
+  lightbox.style.display = "none";
+  detenerAutoplay();
+}
 
 cerrar.addEventListener("click", cerrarLightbox);
 
 lightbox.addEventListener("click", (e) => {
-  if (e.target === lightbox) cerrarLightbox();
+  if (e.target !== imgGrande && e.target !== flechaIzq && e.target !== flechaDer) {
+    cerrarLightbox();
+  }
 });
 
-function cerrarLightbox() {
-  lightbox.style.display = "none";
+// ===== AUTOPLAY =====
+
+let autoplay;
+
+function iniciarAutoplay() {
+  clearInterval(autoplay);
+  autoplay = setInterval(() => {
+    currentIndex = (currentIndex + 1) % imagenes.length;
+    abrirImagen();
+  }, 5000);
 }
+
+function reiniciarAutoplay() {
+  detenerAutoplay();
+  iniciarAutoplay();
+}
+
+function detenerAutoplay() {
+  clearInterval(autoplay);
+}
+
+// ===== FADE IN AL HACER SCROLL =====
+
+const faders = document.querySelectorAll(".fade-in");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, { threshold: 0.1 });
+
+faders.forEach(el => observer.observe(el));
