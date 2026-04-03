@@ -213,6 +213,8 @@ h2 {
   justify-content: center;
   align-items: center;
   z-index: 999;
+  .lightbox {
+  cursor: zoom-out;
 }
 
 /* ===== LIGHTBOX ===== */
@@ -222,6 +224,8 @@ h2 {
   max-height: 90%;
   opacity: 0;
   transition: opacity 0.6s ease;
+  .lightbox img {
+  cursor: default;
 }
 
 #cerrar {
