@@ -263,4 +263,16 @@ h2 {
   nav a {
     margin-left: 16px;
   }
+  h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #999;
+  margin: 40px 0 16px;
+}
+
+h3:first-of-type {
+  margin-top: 0;
 }
