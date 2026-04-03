@@ -1,16 +1,14 @@
-/* ===== TIPOGRAFÍA ===== */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap');
 
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background: white;
   color: #111;
-  font-size: 13px;
-  letter-spacing: 0.02em;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  text-transform: lowercase;
 }
-
-/* ===== HEADER ===== */
 
 header {
   display: flex;
@@ -25,10 +23,12 @@ header {
 }
 
 .logo {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Lora', serif;
   font-size: 22px;
   font-weight: 300;
   letter-spacing: 0.18em;
+  font-variant: small-caps;
+  text-transform: lowercase;
 }
 
 nav a {
@@ -45,29 +45,49 @@ nav a:hover {
   color: #000;
 }
 
-/* ===== HERO ===== */
-
 .hero img {
   width: 100%;
   height: 100vh;
   object-fit: cover;
   display: block;
+  transition: opacity 0.6s ease;
 }
 
-/* ===== GALERÍA ===== */
-
-.works {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+.works-section {
   max-width: 1080px;
   margin: 72px auto;
   padding: 0 48px;
 }
 
+.serie {
+  margin-bottom: 40px;
+}
+
+.serie-titulo {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: #111;
+  margin: 0 0 20px;
+  text-transform: lowercase;
+}
+
+.works {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.work {
+  display: block;
+}
+
 .work img {
   width: 100%;
-  height: 280px;
+  height: 180px;
   object-fit: cover;
   display: block;
   transition: opacity 0.4s;
@@ -83,9 +103,8 @@ nav a:hover {
   letter-spacing: 0.06em;
   color: #888;
   margin-top: 9px;
+  display: block;
 }
-
-/* ===== BIO ===== */
 
 .bio.section {
   max-width: 1080px;
@@ -119,8 +138,6 @@ nav a:hover {
   margin: 0;
 }
 
-/* ===== EXHIBICIONES ===== */
-
 .exhibiciones.section {
   max-width: 1080px;
   margin: 80px auto;
@@ -149,8 +166,6 @@ nav a:hover {
   color: #333;
 }
 
-/* ===== CONTACTO ===== */
-
 .contact.section {
   max-width: 1080px;
   margin: 80px auto 120px;
@@ -159,18 +174,29 @@ nav a:hover {
   padding-top: 64px;
 }
 
-/* ===== TÍTULOS ===== */
-
 h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.1em;
   margin-bottom: 36px;
   color: #111;
+  text-transform: lowercase;
 }
 
-/* ===== BOTONES ===== */
+h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: #999;
+  margin: 40px 0 16px;
+  text-transform: lowercase;
+}
+
+h3:first-of-type {
+  margin-top: 0;
+}
 
 .btn {
   display: inline-block;
@@ -191,8 +217,6 @@ h2 {
   color: #fff;
 }
 
-/* ===== LIGHTBOX ===== */
-
 .lightbox {
   display: none;
   position: fixed;
@@ -203,14 +227,26 @@ h2 {
   background: white;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   z-index: 999;
 }
 
 .lightbox img {
-  max-width: 65%;
-  max-height: 70%;
+  max-width: 90%;
+  max-height: 90%;
   opacity: 0;
   transition: opacity 0.6s ease;
+}
+
+.overlay-info {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: #888;
+  white-space: nowrap;
 }
 
 #cerrar {
@@ -224,8 +260,6 @@ h2 {
   font-weight: 300;
 }
 
-/* ===== FADE IN ===== */
-
 .fade-in {
   opacity: 0;
   transform: translateY(24px);
@@ -237,11 +271,9 @@ h2 {
   transform: translateY(0);
 }
 
-/* ===== RESPONSIVE ===== */
-
 @media (max-width: 900px) {
   .works {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding: 0 28px;
   }
   header {
@@ -251,7 +283,7 @@ h2 {
 
 @media (max-width: 600px) {
   .works {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   .bio-container {
     flex-direction: column;
@@ -263,16 +295,4 @@ h2 {
   nav a {
     margin-left: 16px;
   }
-  h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #999;
-  margin: 40px 0 16px;
-}
-
-h3:first-of-type {
-  margin-top: 0;
 }
