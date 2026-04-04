@@ -1,4 +1,4 @@
-// ===== LIGHTBOX CON DETALLES =====
+// ===== LIGHTBOX CON NAVEGACIÓN GLOBAL =====
 
 const lightbox = document.getElementById("lightbox");
 const imgGrande = document.getElementById("img-grande");
@@ -21,20 +21,22 @@ lightbox.appendChild(flechaDer);
 let secuencia = [];
 let currentIndex = 0;
 
+function buildSecuencia() {
+  secuencia = [];
+  document.querySelectorAll(".work").forEach(work => {
+    const img = work.querySelector("img");
+    const titulo = work.querySelector(".info").textContent;
+    const detalles = work.dataset.detalles ? JSON.parse(work.dataset.detalles) : [];
+    secuencia.push({ src: img.src, titulo });
+    detalles.forEach(src => secuencia.push({ src, titulo: titulo + " — detalle" }));
+  });
+}
+
 document.querySelectorAll(".work").forEach(work => {
   work.querySelector("img").addEventListener("click", () => {
-    const principal = work.querySelector("img").src;
-    const titulo = work.querySelector(".info").textContent;
-    const detalles = work.dataset.detalles
-      ? JSON.parse(work.dataset.detalles)
-      : [];
-
-    secuencia = [
-      { src: principal, titulo },
-      ...detalles.map(src => ({ src, titulo: titulo + " — detalle" }))
-    ];
-
-    currentIndex = 0;
+    buildSecuencia();
+    const clickedSrc = work.querySelector("img").src;
+    currentIndex = secuencia.findIndex(item => item.src === clickedSrc);
     abrirImagen();
   });
 });
@@ -42,13 +44,10 @@ document.querySelectorAll(".work").forEach(work => {
 function abrirImagen() {
   lightbox.style.display = "flex";
   imgGrande.style.opacity = 0;
-
   setTimeout(() => {
     imgGrande.src = secuencia[currentIndex].src;
     info.textContent = secuencia[currentIndex].titulo;
     imgGrande.style.opacity = 1;
-    flechaIzq.style.visibility = secuencia.length > 1 ? "visible" : "hidden";
-    flechaDer.style.visibility = secuencia.length > 1 ? "visible" : "hidden";
   }, 100);
 }
 
@@ -72,7 +71,6 @@ document.addEventListener("keydown", (e) => {
 });
 
 cerrar.addEventListener("click", cerrarLightbox);
-
 lightbox.addEventListener("click", (e) => {
   if (e.target !== imgGrande && e.target !== flechaIzq && e.target !== flechaDer) cerrarLightbox();
 });
@@ -84,21 +82,11 @@ function cerrarLightbox() {
 // ===== HERO SLIDESHOW =====
 
 const heroImgs = [
-  "images/arriba2.jpg",
-  "images/arriba3.jpg",
-  "images/arriba4.jpg",
-  "images/arriba5.jpg",
-  "images/arriba6.jpg",
-  "images/arriba7.jpg",
-  "images/arriba8.jpg",
-  "images/arriba9.jpg",
-  "images/arriba10.jpg",
-  "images/arriba11.jpg",
-  "images/arriba12.jpg",
-  "images/arriba13.jpg",
-  "images/arriba14.jpg",
-  "images/arriba15.jpg",
-  "images/arriba16.jpg"
+  "images/arriba2.jpg", "images/arriba3.jpg", "images/arriba4.jpg",
+  "images/arriba5.jpg", "images/arriba6.jpg", "images/arriba7.jpg",
+  "images/arriba8.jpg", "images/arriba9.jpg", "images/arriba10.jpg",
+  "images/arriba11.jpg", "images/arriba12.jpg", "images/arriba13.jpg",
+  "images/arriba14.jpg", "images/arriba15.jpg", "images/arriba16.jpg"
 ];
 
 let heroIndex = 0;
