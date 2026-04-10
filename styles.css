@@ -304,3 +304,8 @@ h3:first-of-type {
   color: #111;
   text-transform: none;
 }
+
+.desc em {
+  font-style: italic;
+  text-transform: none;
+}
