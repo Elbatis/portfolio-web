@@ -102,6 +102,7 @@ const heroImgs = [
 let heroIndex = 0;
 const heroEl = document.getElementById("hero-img");
 
+heroEl.style.transition = "opacity 1.2s ease";
 setInterval(() => {
   heroIndex = (heroIndex + 1) % heroImgs.length;
   heroEl.style.opacity = 0;
