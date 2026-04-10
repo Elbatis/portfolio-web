@@ -45,6 +45,14 @@ document.querySelectorAll(".work").forEach(work => {
 
 function abrirImagen() {
   lightbox.style.display = "flex";
+  document.body.classList.add("lightbox-open");
+  ...
+}
+
+function cerrarLightbox() {
+  lightbox.style.display = "none";
+  document.body.classList.remove("lightbox-open");
+}
 
   imgGrande.style.transition = "opacity 0.6s ease";
   imgGrande.style.opacity = 0;
