@@ -1,5 +1,4 @@
 // ===== LIGHTBOX CON NAVEGACIÓN GLOBAL =====
-
 const lightbox = document.getElementById("lightbox");
 const imgGrande = document.getElementById("img-grande");
 const cerrar = document.getElementById("cerrar");
@@ -25,20 +24,26 @@ function buildSecuencia() {
   secuencia = [];
   document.querySelectorAll(".work").forEach(work => {
     const img = work.querySelector("img");
-    const titulo = work.querySelector(".info").textContent;
+    const titulo = work.querySelector(".info").textContent.trim();
     const detalles = work.dataset.detalles ? JSON.parse(work.dataset.detalles) : [];
-    secuencia.push({ src: img.src, titulo });
+    secuencia.push({ src: img.getAttribute("src"), titulo });
     detalles.forEach(src => secuencia.push({ src, titulo: titulo + " — detalle" }));
   });
 }
 
-document.querySelectorAll(".work").forEach(work => {
-  work.querySelector("img").addEventListener("click", () => {
-    buildSecuencia();
-    const clickedSrc = work.querySelector("img").src;
-    currentIndex = secuencia.findIndex(item => item.src === clickedSrc);
-    abrirImagen();
-  });
+// Delegación de eventos: un solo listener en el documento
+document.addEventListener("click", function(e) {
+  const work = e.target.closest(".work");
+  if (!work) return;
+  const img = work.querySelector("img");
+  if (!img) return;
+
+  buildSecuencia();
+  const clickedSrc = img.getAttribute("src");
+  const idx = secuencia.findIndex(item => item.src === clickedSrc);
+  if (idx === -1) return;
+  currentIndex = idx;
+  abrirImagen();
 });
 
 function abrirImagen() {
@@ -71,16 +76,17 @@ document.addEventListener("keydown", (e) => {
 });
 
 cerrar.addEventListener("click", cerrarLightbox);
+
 lightbox.addEventListener("click", (e) => {
   if (e.target !== imgGrande && e.target !== flechaIzq && e.target !== flechaDer) cerrarLightbox();
 });
 
 function cerrarLightbox() {
   lightbox.style.display = "none";
+  imgGrande.src = "";
 }
 
 // ===== HERO SLIDESHOW =====
-
 const heroImgs = [
   "images/arriba2.jpg", "images/arriba3.jpg", "images/arriba4.jpg",
   "images/arriba5.jpg", "images/arriba6.jpg", "images/arriba7.jpg",
@@ -88,10 +94,8 @@ const heroImgs = [
   "images/arriba11.jpg", "images/arriba12.jpg", "images/arriba13.jpg",
   "images/arriba14.jpg", "images/arriba15.jpg", "images/arriba16.jpg"
 ];
-
 let heroIndex = 0;
 const heroEl = document.getElementById("hero-img");
-
 setInterval(() => {
   heroIndex = (heroIndex + 1) % heroImgs.length;
   heroEl.style.opacity = 0;
@@ -102,7 +106,6 @@ setInterval(() => {
 }, 10000);
 
 // ===== FADE IN =====
-
 const faders = document.querySelectorAll(".fade-in");
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -110,4 +113,3 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 faders.forEach(el => observer.observe(el));
- 
