@@ -1,5 +1,3 @@
-let bloqueando = false;
-
 // ===== LIGHTBOX CON NAVEGACIÓN GLOBAL =====
 
 const lightbox = document.getElementById("lightbox");
@@ -45,38 +43,30 @@ document.querySelectorAll(".work").forEach(work => {
 
 function abrirImagen() {
   lightbox.style.display = "flex";
-  document.body.classList.add("lightbox-open");
-  ...
-}
-
-function cerrarLightbox() {
-  lightbox.style.display = "none";
-  document.body.classList.remove("lightbox-open");
-}
-
-  imgGrande.style.transition = "opacity 0.6s ease";
   imgGrande.style.opacity = 0;
-
   setTimeout(() => {
     imgGrande.src = secuencia[currentIndex].src;
     info.textContent = secuencia[currentIndex].titulo;
     imgGrande.style.opacity = 1;
-  }, 200);
+  }, 100);
 }
+
 flechaDer.addEventListener("click", (e) => {
   e.stopPropagation();
-  cambiarImagen(1);
+  currentIndex = (currentIndex + 1) % secuencia.length;
+  abrirImagen();
 });
 
 flechaIzq.addEventListener("click", (e) => {
   e.stopPropagation();
-  cambiarImagen(-1);
+  currentIndex = (currentIndex - 1 + secuencia.length) % secuencia.length;
+  abrirImagen();
 });
 
 document.addEventListener("keydown", (e) => {
   if (lightbox.style.display !== "flex") return;
-if (e.key === "ArrowRight") cambiarImagen(1);
-if (e.key === "ArrowLeft") cambiarImagen(-1);
+  if (e.key === "ArrowRight") { currentIndex = (currentIndex + 1) % secuencia.length; abrirImagen(); }
+  if (e.key === "ArrowLeft") { currentIndex = (currentIndex - 1 + secuencia.length) % secuencia.length; abrirImagen(); }
   if (e.key === "Escape") cerrarLightbox();
 });
 
@@ -102,7 +92,6 @@ const heroImgs = [
 let heroIndex = 0;
 const heroEl = document.getElementById("hero-img");
 
-heroEl.style.transition = "opacity 1.2s ease";
 setInterval(() => {
   heroIndex = (heroIndex + 1) % heroImgs.length;
   heroEl.style.opacity = 0;
