@@ -313,3 +313,9 @@ h3:first-of-type {
 .desc, .desc strong, .desc em {
   text-transform: lowercase;
 }
+
+.desc strong {
+  font-weight: 600;
+  color: #111;
+  text-transform: lowercase;
+}
