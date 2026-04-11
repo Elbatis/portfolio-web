@@ -309,3 +309,7 @@ h3:first-of-type {
   font-style: italic;
   text-transform: none;
 }
+
+.desc, .desc strong, .desc em {
+  text-transform: lowercase;
+}
