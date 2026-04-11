@@ -113,3 +113,14 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 faders.forEach(el => observer.observe(el));
+
+// ===== VER MÁS =====
+function toggleVerMas() {
+  const contenido = document.getElementById("series-ocultas");
+  const flecha = document.getElementById("flecha-ver-mas");
+  const texto = document.getElementById("texto-ver-mas");
+  const visible = contenido.style.display !== "none";
+  contenido.style.display = visible ? "none" : "block";
+  flecha.textContent = visible ? "↓" : "↑";
+  texto.textContent = visible ? "ver más" : "ver menos";
+}
