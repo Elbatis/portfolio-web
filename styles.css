@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap');
 
-body.lightbox-open {
-  overflow: hidden;
-}
-
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -277,29 +273,116 @@ h3:first-of-type {
   transform: translateY(0);
 }
 
+/* ===== RESPONSIVE ===== */
+
 @media (max-width: 900px) {
   .works {
     grid-template-columns: repeat(3, 1fr);
-    padding: 0 28px;
   }
   header {
-    padding: 18px 28px;
+    padding: 18px 24px;
+  }
+  .works-section {
+    padding: 0 24px;
+    margin: 48px auto;
   }
 }
 
 @media (max-width: 600px) {
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 20px;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 0;
+  }
+
+  nav a {
+    margin-left: 0;
+    margin-right: 20px;
+    font-size: 10px;
+  }
+
+  .hero img {
+    height: 55vh;
+  }
+
+  .works-section {
+    padding: 0 16px;
+    margin: 36px auto;
+  }
+
+  .serie {
+    margin-bottom: 28px;
+  }
+
   .works {
     grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
+
+  .work img {
+    height: 140px;
+  }
+
+  .bio.section {
+    margin: 48px auto;
+    padding: 0 16px;
+    padding-top: 40px;
+  }
+
   .bio-container {
     flex-direction: column;
-    gap: 28px;
+    gap: 24px;
   }
+
   .bio-image img {
-    width: 140px;
+    width: 120px;
   }
-  nav a {
-    margin-left: 16px;
+
+  .bio-text p {
+    font-size: 13px;
+    line-height: 1.85;
+  }
+
+  .exhibiciones.section {
+    padding: 0 16px;
+    padding-top: 40px;
+    margin: 48px auto;
+  }
+
+  .exhibicion {
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 20px;
+  }
+
+  .year {
+    width: auto;
+  }
+
+  .contact.section {
+    padding: 0 16px;
+    padding-top: 40px;
+    margin: 40px auto 80px;
+  }
+
+  .btn {
+    display: block;
+    text-align: center;
+    margin: 0 0 10px 0;
+    padding: 12px 20px;
+  }
+
+  #cerrar {
+    top: 16px;
+    right: 20px;
   }
 }
 
@@ -312,4 +395,35 @@ h3:first-of-type {
 .desc em {
   font-style: italic;
   text-transform: none;
+}
+
+.desc, .desc strong, .desc em {
+  text-transform: lowercase;
+}
+
+.desc strong {
+  font-weight: 600;
+  color: #111;
+  text-transform: lowercase;
+}
+
+.desc strong {
+  font-weight: 500;
+  color: #111;
+  text-transform: none;
+}
+
+.desc em {
+  font-style: italic;
+  text-transform: none;
+}
+
+.desc, .desc strong, .desc em {
+  text-transform: lowercase;
+}
+
+.desc strong {
+  font-weight: 600;
+  color: #111;
+  text-transform: lowercase;
 }
