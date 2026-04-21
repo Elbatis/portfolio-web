@@ -27,7 +27,7 @@ function buildSecuencia() {
     const titulo = work.querySelector(".info").textContent.trim();
     const detalles = work.dataset.detalles ? JSON.parse(work.dataset.detalles) : [];
     secuencia.push({ src: img.getAttribute("src"), titulo });
-    detalles.forEach(src => secuencia.push({ src, titulo: titulo + " — detalle" }));
+    detalles.forEach(src => secuencia.push({ src, titulo: "detalle de: " + titulo }));
   });
 }
 
