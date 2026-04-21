@@ -100,12 +100,13 @@ nav a:hover {
 }
 
 .info {
-  font-size: 11px;
-  letter-spacing: 0.06em;
+  font-size: 9px;
+  letter-spacing: 0.04em;
   color: #888;
-  margin-top: 14px;
+  margin-top: 6px;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+  line-height: 1.4;
 }
 
 .bio.section {
