@@ -54,6 +54,11 @@ function abrirImagen() {
     info.textContent = secuencia[currentIndex].titulo;
     imgGrande.style.opacity = 1;
   }, 100);
+
+  // Agrega un estado al historial para que el botón "atrás" cierre el lightbox
+  if (!history.state || !history.state.lightboxAbierto) {
+    history.pushState({ lightboxAbierto: true }, "");
+  }
 }
 
 flechaDer.addEventListener("click", (e) => {
@@ -84,7 +89,20 @@ lightbox.addEventListener("click", (e) => {
 function cerrarLightbox() {
   lightbox.style.display = "none";
   imgGrande.src = "";
+
+  // Si hay un estado de lightbox en el historial, lo saca sin navegar afuera
+  if (history.state && history.state.lightboxAbierto) {
+    history.back();
+  }
 }
+
+// Intercepta el botón "atrás" del navegador/móvil
+window.addEventListener("popstate", (e) => {
+  if (lightbox.style.display === "flex") {
+    lightbox.style.display = "none";
+    imgGrande.src = "";
+  }
+});
 
 // ===== HERO SLIDESHOW =====
 const heroImgs = [
