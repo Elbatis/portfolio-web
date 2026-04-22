@@ -9,12 +9,12 @@ lightbox.appendChild(info);
 
 const flechaIzq = document.createElement("span");
 flechaIzq.textContent = "←";
-flechaIzq.style.cssText = "position:absolute;left:40px;top:50%;transform:translateY(-50%);font-size:22px;cursor:pointer;color:#111;user-select:none;";
+flechaIzq.classList.add("lightbox-flecha", "lightbox-flecha-izq");
 lightbox.appendChild(flechaIzq);
 
 const flechaDer = document.createElement("span");
 flechaDer.textContent = "→";
-flechaDer.style.cssText = "position:absolute;right:40px;top:50%;transform:translateY(-50%);font-size:22px;cursor:pointer;color:#111;user-select:none;";
+flechaDer.classList.add("lightbox-flecha", "lightbox-flecha-der");
 lightbox.appendChild(flechaDer);
 
 let secuencia = [];
@@ -31,7 +31,6 @@ function buildSecuencia() {
   });
 }
 
-// Delegación de eventos: un solo listener en el documento
 document.addEventListener("click", function(e) {
   const work = e.target.closest(".work");
   if (!work) return;
@@ -55,7 +54,6 @@ function abrirImagen() {
     imgGrande.style.opacity = 1;
   }, 100);
 
-  // Agrega un estado al historial para que el botón "atrás" cierre el lightbox
   if (!history.state || !history.state.lightboxAbierto) {
     history.pushState({ lightboxAbierto: true }, "");
   }
@@ -90,13 +88,11 @@ function cerrarLightbox() {
   lightbox.style.display = "none";
   imgGrande.src = "";
 
-  // Si hay un estado de lightbox en el historial, lo saca sin navegar afuera
   if (history.state && history.state.lightboxAbierto) {
     history.back();
   }
 }
 
-// Intercepta el botón "atrás" del navegador/móvil
 window.addEventListener("popstate", (e) => {
   if (lightbox.style.display === "flex") {
     lightbox.style.display = "none";
