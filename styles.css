@@ -55,12 +55,12 @@ nav a:hover {
 
 .works-section {
   max-width: 1080px;
-  margin: 72px auto;
-  padding: 0 48px;
+  margin: 28px auto;
+  padding: 0 18px;
 }
 
 .serie {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .serie-titulo {
@@ -100,12 +100,13 @@ nav a:hover {
 }
 
 .info {
-  font-size: 11px;
-  letter-spacing: 0.06em;
+  font-size: 9px;
+  letter-spacing: 0.04em;
   color: #888;
-  margin-top: 14px;
+  margin-top: 4px;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  line-height: 1.4;
 }
 
 .bio.section {
@@ -219,6 +220,8 @@ h3:first-of-type {
   color: #fff;
 }
 
+/* ===== LIGHTBOX ===== */
+
 .lightbox {
   display: none;
   position: fixed;
@@ -234,10 +237,11 @@ h3:first-of-type {
 }
 
 .lightbox img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 80%;
+  max-height: 80%;
   opacity: 0;
   transition: opacity 0.6s ease;
+  display: block;
 }
 
 .overlay-info {
@@ -248,7 +252,10 @@ h3:first-of-type {
   font-size: 14px;
   letter-spacing: 0.08em;
   color: #888;
-  white-space: nowrap;
+  white-space: normal;
+  width: 80%;
+  text-align: center;
+  line-height: 1.6;
 }
 
 #cerrar {
@@ -261,6 +268,34 @@ h3:first-of-type {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
 }
+
+/* Flechas a los costados de la imagen, no encima */
+.lightbox-flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  cursor: pointer;
+  color: #bbb;
+  user-select: none;
+  padding: 12px 16px;
+  transition: color 0.2s;
+  z-index: 1000;
+}
+
+.lightbox-flecha:hover {
+  color: #111;
+}
+
+.lightbox-flecha-izq {
+  left: 24px;
+}
+
+.lightbox-flecha-der {
+  right: 24px;
+}
+
+/* ===== FADE IN ===== */
 
 .fade-in {
   opacity: 0;
@@ -384,27 +419,30 @@ h3:first-of-type {
     top: 16px;
     right: 20px;
   }
-}
 
-.desc strong {
-  font-weight: 500;
-  color: #111;
-  text-transform: none;
-}
+  .overlay-info {
+    font-size: 12px;
+    bottom: 24px;
+    width: 70%;
+  }
 
-.desc em {
-  font-style: italic;
-  text-transform: none;
-}
+  .lightbox img {
+    max-width: 80%;
+    max-height: 85%;
+  }
 
-.desc, .desc strong, .desc em {
-  text-transform: lowercase;
-}
+  .lightbox-flecha {
+    font-size: 18px;
+    padding: 10px 12px;
+  }
 
-.desc strong {
-  font-weight: 600;
-  color: #111;
-  text-transform: lowercase;
+  .lightbox-flecha-izq {
+    left: 8px;
+  }
+
+  .lightbox-flecha-der {
+    right: 8px;
+  }
 }
 
 .desc strong {
