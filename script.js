@@ -63,11 +63,6 @@ function abrirImagen() {
   }, 100);
 }
 
-  if (!history.state || !history.state.lightboxAbierto) {
-    history.pushState({ lightboxAbierto: true }, "");
-  }
-}
-
 flechaDer.addEventListener("click", (e) => {
   e.stopPropagation();
   currentIndex = (currentIndex + 1) % secuencia.length;
