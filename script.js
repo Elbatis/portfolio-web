@@ -52,7 +52,16 @@ function abrirImagen() {
     imgGrande.src = secuencia[currentIndex].src;
     info.textContent = secuencia[currentIndex].titulo;
     imgGrande.style.opacity = 1;
+    
+    // Precargar siguiente e imagen anterior
+    const nextIdx = (currentIndex + 1) % secuencia.length;
+    const prevIdx = (currentIndex - 1 + secuencia.length) % secuencia.length;
+    const nextImg = new Image();
+    const prevImg = new Image();
+    nextImg.src = secuencia[nextIdx].src;
+    prevImg.src = secuencia[prevIdx].src;
   }, 100);
+}
 
   if (!history.state || !history.state.lightboxAbierto) {
     history.pushState({ lightboxAbierto: true }, "");
