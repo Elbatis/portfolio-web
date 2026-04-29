@@ -48,6 +48,10 @@ document.addEventListener("click", function(e) {
 function abrirImagen() {
   lightbox.style.display = "flex";
   imgGrande.style.opacity = 0;
+  
+  // Guardar estado en el historial para que atrás cierre la imagen
+  history.pushState({ lightboxOpen: true }, "");
+  
   setTimeout(() => {
     imgGrande.src = secuencia[currentIndex].src;
     info.textContent = secuencia[currentIndex].titulo;
