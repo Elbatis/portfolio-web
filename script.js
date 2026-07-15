@@ -48,6 +48,10 @@ document.addEventListener("click", function(e) {
 function abrirImagen() {
   lightbox.style.display = "flex";
   imgGrande.style.opacity = 0;
+  
+  // Guardar estado en el historial para que atrás cierre la imagen
+  history.pushState({ lightboxOpen: true }, "");
+  
   setTimeout(() => {
     imgGrande.src = secuencia[currentIndex].src;
     info.textContent = secuencia[currentIndex].titulo;
@@ -61,11 +65,6 @@ function abrirImagen() {
     nextImg.src = secuencia[nextIdx].src;
     prevImg.src = secuencia[prevIdx].src;
   }, 100);
-}
-
-  if (!history.state || !history.state.lightboxAbierto) {
-    history.pushState({ lightboxAbierto: true }, "");
-  }
 }
 
 flechaDer.addEventListener("click", (e) => {

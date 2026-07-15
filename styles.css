@@ -332,6 +332,11 @@ h3:first-of-type {
     padding: 16px 20px;
   }
 
+  .logo {
+  font-size: 22px;
+  letter-spacing: 0.1em;
+}
+  
   nav {
     display: flex;
     flex-wrap: wrap;
